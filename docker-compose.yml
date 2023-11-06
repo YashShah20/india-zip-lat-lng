@@ -1,0 +1,16 @@
+version: "3.0.0"
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 8080:80
+    depends_on:
+      backend: 
+        condition: "service_started"
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/usr/home/app
+    ports:
+      - 3000:3000
+    
